@@ -36,6 +36,18 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UTextBlock> TextLastResult;
 	
+	// 턴 정보
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> TextTurnInfo;
+	
+	// 남은 시간 정보
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> TextTimer;
+	
+	// 시도 횟수
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> TextMyAttempts;
+	
 	UFUNCTION()
 	void OnSubmitButtonClicked();
 	

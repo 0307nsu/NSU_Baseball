@@ -15,11 +15,11 @@ public:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 	
 	// 현재 턴인 플레이어의 PlayerState
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Baseball")
+	UPROPERTY(ReplicatedUsing = OnRep_CurrentTurnPlayer, BlueprintReadOnly, Category = "Baseball")
 	TObjectPtr<APlayerState> CurrentTurnPlayer;
 	
 	// 현재 턴의 남은 시간
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Baseball")
+	UPROPERTY(ReplicatedUsing = OnRep_RemainTime, BlueprintReadOnly, Category = "Baseball")
 	int32 RemainTime;
 	
 protected:

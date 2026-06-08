@@ -29,6 +29,8 @@ private:
 	// 숫자 랜덤 생성
 	FString	GenerateTargetNumber();
 	
+	bool bIsGameOver = false;
+	
 	// 플레이어 입력 검증
 	bool IsValidInput(const FString& InputStr);
 	

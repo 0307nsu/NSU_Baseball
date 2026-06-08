@@ -15,9 +15,12 @@ public:
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 	
 	// 사용한 기회
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Baseball")
+	UPROPERTY(ReplicatedUsing = OnRep_UsedAttemptCount, BlueprintReadOnly, Category = "Baseball")
 	int32 UsedAttemptCount;
 	
 	// 기회 소모
 	void IncrementAttempt();
+	
+	UFUNCTION()
+	void OnRep_UsedAttemptCount();
 };
