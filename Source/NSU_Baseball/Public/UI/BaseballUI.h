@@ -51,5 +51,6 @@ protected:
 	UFUNCTION()
 	void OnSubmitButtonClicked();
 	
-
+	UFUNCTION()
+	void OnInputTextCommitted(const FText& Text, ETextCommit::Type CommitMethod);
 };

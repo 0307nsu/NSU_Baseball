@@ -22,7 +22,6 @@ public:
 	UPROPERTY(ReplicatedUsing = OnRep_RemainTime, BlueprintReadOnly, Category = "Baseball")
 	int32 RemainTime;
 	
-protected:
 	UFUNCTION()
 	void OnRep_CurrentTurnPlayer();
 	

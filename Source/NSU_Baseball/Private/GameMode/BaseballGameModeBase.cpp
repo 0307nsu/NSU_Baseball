@@ -68,12 +68,12 @@ void ABaseballGameModeBase::ProcessPlayerInput(APlayerController* PC, const FStr
 	FString ResultMessage;
 	if (Strikes == 0 && Balls == 0)
 	{
-		ResultMessage = TEXT("OUT");
+		ResultMessage = FString::Printf(TEXT("%s -> OUT"), *InputStr);
 	}
 
 	else
 	{
-		ResultMessage = FString::Printf(TEXT("%dS%dB"), Strikes, Balls);
+		ResultMessage = FString::Printf(TEXT("%s -> %dS%dB"), *InputStr, Strikes, Balls);
 	}
 	
 	ABaseballPlayerController* BaseballPC = Cast<ABaseballPlayerController>(PC);
@@ -110,6 +110,8 @@ void ABaseballGameModeBase::StartTurn()
 	
 	GS->CurrentTurnPlayer = GS->PlayerArray[CurrentTurnIndex];
 	GS->RemainTime = 30;
+	GS->OnRep_CurrentTurnPlayer();
+	GS->OnRep_RemainTime();
 		
 	ABaseballPlayerState* PS = Cast<ABaseballPlayerState>(GS->CurrentTurnPlayer);
 	if (PS->UsedAttemptCount >= 3)

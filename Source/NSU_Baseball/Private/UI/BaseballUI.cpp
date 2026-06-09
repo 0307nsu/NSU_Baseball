@@ -13,6 +13,11 @@ void UBaseballUI::NativeConstruct()
 	{
 		SubmitButton->OnClicked.AddDynamic(this, &UBaseballUI::OnSubmitButtonClicked);
 	}
+	
+	if (InputTextBox)
+	{
+		InputTextBox->OnTextCommitted.AddDynamic(this, &UBaseballUI::OnInputTextCommitted);
+	}
 }
 
 void UBaseballUI::OnSubmitButtonClicked()
@@ -32,11 +37,29 @@ void UBaseballUI::OnSubmitButtonClicked()
 	}
 }
 
+void UBaseballUI::OnInputTextCommitted(const FText& Text, ETextCommit::Type CommitMethod)
+{
+	if (CommitMethod == ETextCommit::OnEnter)
+	{
+		OnSubmitButtonClicked();
+	}
+}
+
 void UBaseballUI::SetResultText(const FString& ResultMsg)
 {
 	if (TextLastResult)
 	{
-		TextLastResult->SetText(FText::FromString(ResultMsg));
+		FString CurrentText = TextLastResult->GetText().ToString();
+		
+		if (CurrentText.IsEmpty())
+		{
+			TextLastResult->SetText(FText::FromString(ResultMsg));
+		}
+
+		else
+		{
+			TextLastResult->SetText(FText::FromString(CurrentText + TEXT("\n") + ResultMsg));
+		}
 	}
 }
 
