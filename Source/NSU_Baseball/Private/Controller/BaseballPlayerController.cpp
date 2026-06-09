@@ -7,6 +7,14 @@ void ABaseballPlayerController::SubmitInput(const FString& InputStr)
 	ServerSubmitInput(InputStr);
 }
 
+void ABaseballPlayerController::ClientReceiveWarning_Implementation(const FString& WarningMsg)
+{
+	if (BaseballUI)
+	{
+		BaseballUI->ShowWarningMessage(WarningMsg);
+	}
+}
+
 void ABaseballPlayerController::BeginPlay()
 {
 	Super::BeginPlay();

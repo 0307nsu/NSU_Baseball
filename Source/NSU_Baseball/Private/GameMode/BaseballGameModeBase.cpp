@@ -35,6 +35,10 @@ void ABaseballGameModeBase::ProcessPlayerInput(APlayerController* PC, const FStr
 	
 	if (PC->GetPlayerState<APlayerState>() != GS->CurrentTurnPlayer)
 	{
+		if (ABaseballPlayerController* BaseballPC = Cast<ABaseballPlayerController>(PC))
+		{
+			BaseballPC->ClientReceiveWarning(TEXT("상대 턴입니다. 기다려주세요."));
+		}
 		return;
 	}
 	
@@ -43,7 +47,7 @@ void ABaseballGameModeBase::ProcessPlayerInput(APlayerController* PC, const FStr
 		ABaseballPlayerController* BaseballPC = Cast<ABaseballPlayerController>(PC);
 		if (BaseballPC)
 		{
-			BaseballPC->ClientReceiveResult(TEXT("잘못된 입력입니다. 1~9 중 숫자 3개를 입력하세요."));
+			BaseballPC->ClientReceiveWarning(TEXT("잘못된 입력입니다. 1~9 중 숫자 3개를 입력하세요."));
 		}
 		return;
 	}

@@ -88,3 +88,16 @@ void UBaseballUI::UpdateAttemptDisplay(int32 UsedCount)
 		TextMyAttempts->SetText(FText::FromString(AttemptMsg));
 	}
 }
+
+void UBaseballUI::ShowWarningMessage(const FString& WarningMsg)
+{
+	if (TextWarning)
+	{
+		TextWarning->SetText(FText::FromString(WarningMsg));
+	}
+	
+	if (FadeOutWarningAnim)
+	{
+		PlayAnimation(FadeOutWarningAnim);
+	}
+}

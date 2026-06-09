@@ -24,6 +24,10 @@ public:
 	UFUNCTION(Client, Reliable)
 	void ClientReceiveResult(const FString& ResultMsg);
 	
+	// 경고 메시지 출력
+	UFUNCTION(Client, Reliable)
+	void ClientReceiveWarning(const FString& WarningMsg);
+	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI")
 	TSubclassOf<UBaseballUI> BaseballUIClass;
 	

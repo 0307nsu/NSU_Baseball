@@ -21,6 +21,8 @@ public:
 	void UpdateTimerDisplay(int32 NewTime);
 	void UpdateAttemptDisplay(int32 UsedCount);
 	
+	void ShowWarningMessage(const FString& WarningMsg);
+	
 protected:
 	virtual void NativeConstruct() override;
 	
@@ -47,6 +49,14 @@ protected:
 	// 시도 횟수
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UTextBlock> TextMyAttempts;
+	
+	// 경고 문구
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> TextWarning;
+	
+	// 경고 문구 페이드 아웃 애니메이션
+	UPROPERTY(meta = (BindWidgetAnim), Transient)
+	TObjectPtr<UWidgetAnimation> FadeOutWarningAnim;
 	
 	UFUNCTION()
 	void OnSubmitButtonClicked();
